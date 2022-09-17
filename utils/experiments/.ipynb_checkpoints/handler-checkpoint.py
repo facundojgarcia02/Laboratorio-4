@@ -31,12 +31,12 @@ class Experiment:
         Method for taking measures.
         """
         self.currentVals = {}
-        for k, f in self.medFuncs:
+        for k, f in self.medFuncs.items():
             self.currentVals[k] = f()
         self.currentVals["t"] = self.t
         self.currentVals["i"] = self.i 
 
-    def start_dict(extra_values = []):
+    def start_dict(self, extra_values = []):
         all_keys = list(self.medFuncs) + extra_values + ["t", "i"]
         
         self.currentVals = {k: None for k in all_keys}
@@ -46,10 +46,10 @@ class Experiment:
         """
         Method for saving measures.
         """
-        for k, v in self.currentVals:
+        for k, v in self.currentVals.items():
             self.storedVals[k].append(v)
     
-    def create_df():
+    def create_df(self):
         "Creates pandas DataFrame with results"
         return DataFrame(self.storedVals)
     

@@ -43,7 +43,7 @@ class Ferromagnetism(Experiment):
         self.medFuncs = {"RplatPre": medRPlat, "Vs": medVs, "RplatPost": medRPlat} 
         
         #Requerido siempre.
-        self.start_dicts(extra_values = ["Tpre", "V1", "V2", "TPost"])
+        self.start_dict(extra_values = ["Tpre", "V1", "V2", "TPost"])
         
     def measure(self):
         super().measure()
@@ -60,7 +60,7 @@ class Ferromagnetism(Experiment):
         y = np.array(self.currentVals[ykey])
         return x, y        
     
-    def save_df():
-        df = super().save_df()
+    def create_df():
+        df = super().create_df()
         df.drop(columns = ["Vs"], inplace = True)
         return df
